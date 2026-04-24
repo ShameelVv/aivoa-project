@@ -1,0 +1,14 @@
+# Python
+aivoa_backend/venv/
+aivoa_backend/__pycache__/
+aivoa_backend/**/__pycache__/
+*.pyc
+aivoa_backend/.env
+
+# Node
+aivoa_frontend/node_modules/
+aivoa_frontend/dist/
+
+# System
+.DS_Store
+Thumbs.db
