@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+from datetime import datetime
 
 class InteractionCreate(BaseModel):
     hcp_name: str
@@ -25,7 +26,7 @@ class InteractionUpdate(BaseModel):
 
 class InteractionResponse(InteractionCreate):
     id: int
-    created_at: Optional[str] = None
+    created_at: Optional[datetime] = None  # ← changed from str to datetime
 
     class Config:
         from_attributes = True

@@ -21,9 +21,9 @@ app = FastAPI(title="AIVOA HCP CRM API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # React dev server port
-    allow_credentials=True,
-    allow_methods=["*"],   # allow GET, POST, PUT, DELETE
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
