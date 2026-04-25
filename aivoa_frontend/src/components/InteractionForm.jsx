@@ -3,15 +3,29 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveInteraction } from '../store/interactionSlice'
 
+
+  // Helper to get today's date in YYYY-MM-DD format
+const getTodayDate = () => {
+  return new Date().toISOString().split('T')[0]
+}
+
+// Helper to get current time in HH:MM format
+const getCurrentTime = () => {
+  const now = new Date()
+  return now.toTimeString().slice(0, 5)
+}
+
+
 const InteractionForm = () => {
   const dispatch = useDispatch()
   const { loading, formData } = useSelector((state) => state.interactions)
 
+
   const emptyForm = {
     hcp_name: '',
     interaction_type: 'Meeting',
-    date: '',
-    time: '',
+    date: getTodayDate(),      
+    time: getCurrentTime(),    
     attendees: '',
     topics_discussed: '',
     materials_shared: '',
@@ -81,6 +95,7 @@ const InteractionForm = () => {
       )}
 
       <form onSubmit={handleSubmit}>
+        <p style={styles.sectionLabel}>Interaction Details</p>
         <div style={styles.row}>
           <div style={styles.field}>
             <label style={styles.label}>HCP Name *</label>
@@ -238,6 +253,14 @@ const InteractionForm = () => {
 }
 
 const styles = {
+  sectionLabel: {
+    fontSize: '13px',
+    fontWeight: '600',
+    color: '#6b7280',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    marginBottom: '16px',
+  },
   container: {
     background: '#ffffff',
     borderRadius: '12px',
@@ -348,6 +371,7 @@ const styles = {
     fontSize: '14px',
     fontWeight: '500',
   }
+  
 }
 
 export default InteractionForm
